@@ -16,10 +16,13 @@ ssao_enabled = true
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.116851, 0.256317, 0.26485, 1)
-fog_light_energy = 0.83
+fog_light_energy = 4.54
 fog_density = 1.0
-fog_depth_curve = 0.466516
+fog_depth_curve = 0.307786
+fog_depth_begin = 0.0
+fog_depth_end = 31.0
 volumetric_fog_enabled = true
+volumetric_fog_density = 0.35
 volumetric_fog_albedo = Color(0.0726086, 0.379737, 0.420496, 1)
 
 [sub_resource type="Gradient" id="Gradient_ur0vy"]
