@@ -1,34 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://b24ojndtgv2yn"]
+[gd_scene load_steps=9 format=3 uid="uid://b24ojndtgv2yn"]
 
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_e18vq"]
+[ext_resource type="Texture2D" uid="uid://cxjxvqmf4boxq" path="res://textures/green.png" id="2_hk23j"]
+[ext_resource type="Texture2D" uid="uid://dsv4jm4vydflb" path="res://textures/orange.png" id="2_oj52c"]
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_edcox"]
-ground_color = Color(0.160784, 0.815686, 0.905882, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gtwuw"]
 
-[sub_resource type="Sky" id="Sky_2iust"]
-sky_material = SubResource("PhysicalSkyMaterial_edcox")
+[sub_resource type="Sky" id="Sky_sa7pn"]
+sky_material = SubResource("ProceduralSkyMaterial_gtwuw")
 
-[sub_resource type="Environment" id="Environment_20rw3"]
+[sub_resource type="Environment" id="Environment_w1p2x"]
 background_mode = 2
-sky = SubResource("Sky_2iust")
-tonemap_mode = 1
-ssao_enabled = true
-fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(0.116851, 0.256317, 0.26485, 1)
-fog_light_energy = 4.54
-fog_density = 1.0
-fog_depth_curve = 0.307786
-fog_depth_begin = 0.0
-fog_depth_end = 31.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.35
-volumetric_fog_albedo = Color(0.0726086, 0.379737, 0.420496, 1)
+sky = SubResource("Sky_sa7pn")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67ysu"]
-albedo_color = Color(1, 1, 0.619608, 1)
-uv1_scale = Vector3(0.1, 0.1, 0.1)
-uv1_triplanar = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xorq3"]
+albedo_texture = ExtResource("2_oj52c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvr01"]
+albedo_texture = ExtResource("2_hk23j")
 
 [node name="test_world" type="Node3D"]
 
@@ -36,7 +25,7 @@ uv1_triplanar = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_20rw3")
+environment = SubResource("Environment_w1p2x")
 
 [node name="sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.87959, -0.436605, 0.188936, 0, 0.397148, 0.917755, -0.475732, -0.807248, 0.349328, 0, 0, 0)
@@ -49,4 +38,10 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, 10)
 use_collision = true
 size = Vector3(30, 1, 30)
-material = SubResource("StandardMaterial3D_67ysu")
+material = SubResource("StandardMaterial3D_xorq3")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="terrain"]
+transform = Transform3D(0.593732, 0, 0, 0, 2.0055, 0, 0, 0, 0.303981, 10, -0.5, 18.0808)
+use_collision = true
+size = Vector3(30, 1, 30)
+material = SubResource("StandardMaterial3D_qvr01")
